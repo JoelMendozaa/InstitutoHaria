@@ -168,17 +168,20 @@ fun MiContenido(
 /******************* PRIMERA PÁGINA **********************/
 @Composable
 fun MiInicio(fpbClick: () -> Unit, fpmClick: () -> Unit, fpsClick: () -> Unit) {
-    Column (
+    LazyColumn (
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        MiTopBar()
-        Image(
-            painter = painterResource(id = R.drawable.centro_menu_1),
-            contentDescription = "centro_menu_1.png"
-        )
-        MiInformacionDelCentro()
-        MisBotonesInicio(fpbClick, fpmClick, fpsClick)
+        item{
+            MiTopBar()
+            Image(
+                painter = painterResource(id = R.drawable.centro_menu_1),
+                contentDescription = "centro_menu_1.png"
+            )
+            MiInformacionDelCentro()
+            MisBotonesInicio(fpbClick, fpmClick, fpsClick)
+            MiProyectos()
+        }
     }
 }
 
@@ -732,6 +735,7 @@ fun MiFPS(fpbClick: () -> Unit, fpmClick: () -> Unit, inicioClick: () -> Unit){
             MiInformacionYRequisitosFPS()
             MisBotonesFPS(fpbClick, fpmClick, inicioClick)
             MisAsiganturasFPS1()
+            MisAsiganturasFPS2()
         }
     }
 }
@@ -777,14 +781,14 @@ fun MiInformacionYRequisitosFPS(){
                 withStyle(style = SpanStyle(fontSize = 16.sp)) {
                     append(
                         "Para acceder al Grado Superior de Desarrollo de Aplicaciones Multiplataformas se debe cumplir algunos de los siguientes requisitos:\n" +
-                                "Bachiller.\n" +
-                                "Técnico Superior de Formación Profesional o grado universitario\n" +
-                                "Técnico de Grado Medio de Formación Profesional o el título de Técnico o Técnica de Artes Plásticas y Diseño\n" +
-                                "\n" +
-                                "Y haber superado:\n" +
-                                "Una oferta formativa de Grado C incluida en el ciclo formativo.\n" +
-                                "Un curso de formación específico preparatorio y gratuito para el acceso a ciclos de grado superior en centros expresamente autorizados por la Administración educativa.\n" +
-                                "Una prueba de acceso.\n"
+                        "Bachiller.\n" +
+                        "Técnico Superior de Formación Profesional o grado universitario\n" +
+                        "Técnico de Grado Medio de Formación Profesional o el título de Técnico o Técnica de Artes Plásticas y Diseño\n" +
+                        "\n" +
+                        "Y haber superado:\n" +
+                        "Una oferta formativa de Grado C incluida en el ciclo formativo.\n" +
+                        "Un curso de formación específico preparatorio y gratuito para el acceso a ciclos de grado superior en centros expresamente autorizados por la Administración educativa.\n" +
+                        "Una prueba de acceso.\n"
                     )
                 }
             },
@@ -805,22 +809,31 @@ fun MisBotonesFPS(fpbClick: () -> Unit, fpmClick: () -> Unit, inicioClick: () ->
 @Composable
 fun MisAsiganturasFPS1(
     imagenAsignatura: List<Int> = listOf(
-        R.drawable.cienciasaplicadas,
-        R.drawable.comunicacionsociedad,
-        R.drawable.equiposelectricos,
-        R.drawable.mantenimiento,
+        R.drawable.sistemasinformaticos,
+        R.drawable.basededatos,
+        R.drawable.programacion,
+        R.drawable.lenguajemarca,
+        R.drawable.entornodesarrollo,
+        R.drawable.fol2,
+        R.drawable.ingles
     ),
     nombre: List<String> = listOf(
-        "Ciencias Aplicadas I",
-        "Comunicación y sociedad I",
-        "Equipos Eléctricos y Electrónicos",
-        "Instalación y mantenimiento para transmisión de datos"
+        "Sistemas informáticos",
+        "Base de datos",
+        "Programación",
+        "Lenguaje de marcas",
+        "Entorno de desarrollo",
+        "Formación y orientación laboral",
+        "Inglés"
     ),
     descripcion: List<String> = listOf(
-        "Aplicación del conocimiento científico básico a necesidades humanas y al desarrollo tecnológico.\nHoras Semanales: 6 horas\nHoras Totales: 215 horas.",
-        "Se desarrolla las habilidades y destrezas lingüísticas, además de alcanzar el nivel de precisión, claridad y fluidez requeridas, para comunicarse en su entorno.\nHoras Semanales: 6 horas\nHoras Totales: 215 horas\n",
-        "Se basa en el montaje y mantenimiento de equipos eléctricos y electrónicos\nHoras Semanales: 11 horas\nHoras Totales: 305 horas",
-        "Se administra, gestiona, instala y mantiene las redes.\nHoras Semanales: 7 horas\nHoras Totales: 217 horas"
+        "El objetivo del módulo de \"Sistemas Informáticos\" pretende formar al alumno en los distintos sistemas informáticos, principalmente en lo que respecta a los sistemas operativos, las aplicaciones de propósito general y las redes de área local.\n Horas Semanales : 5 horas\n Horas Totales: 160 horas.\n",
+        "Este módulo profesional contiene la formación necesaria para desempeñar funciones relacionadas con la gestión de la información almacenada en bases de datos y el desarrollo de aplicaciones que acceden a bases de datos.\n Horas Semanales : 6 horas\n Horas Totales: 190 horas\n",
+        "Este módulo profesional contiene parte de la formación necesaria para desempeñar la función de programación de aplicaciones de propósito general en lenguajes orientados a objetos.\n Horas Semanales : 7 horas\n Horas Totales: 256 horas.\n",
+        "Este módulo profesional contiene la formación necesaria para desempeñar la funciónde gestión y explotación de sistemas de información.\n Horas Semanales : 4 horas\n Horas Totales: 128 horas\n",
+        "Este módulo profesional contiene la formación necesaria para la utilización de las herramientas software disponibles, la elaboración de documentación interna y técnica de la aplicación, elaboración y ejecución de pruebas y la optimización de código.\n Horas Semanales : 3 horas\n Horas Totales: 96 horas",
+        "Este módulo profesional contiene la formación necesaria para que el alumno pueda insertarse laboralmente y desarrollar su carrera profesional en el sector del Desarrollo de Aplicaciones multiplataforma.\n Horas Semanales : 3 horas\n Horas Totales: 96 horas",
+        "La asignatura de ingles se enfoca principalmente al sector informático, enseñandote nuevo vocabulario relacionado con el mundo informático\n Horas Semanales : 2 horas\n Horas Totales: 64 horas\n"
     )
 
 ){
@@ -830,6 +843,48 @@ fun MisAsiganturasFPS1(
         descripcion = descripcion
     )
 }
+
+@Composable
+fun MisAsiganturasFPS2(
+    imagenAsignatura: List<Int> = listOf(
+        R.drawable.accesodatos,
+        R.drawable.desarrollointerfaces,
+        R.drawable.programacionmultimedia,
+        R.drawable.programacionserviciosyprocesos,
+        R.drawable.gestionempresarial,
+        R.drawable.desarrolloaplicaciones,
+        R.drawable.fct3,
+        R.drawable.empresainiciativa
+    ),
+    nombre: List<String> = listOf(
+        "Acceso a Datos",
+        "Desarrollo de Interfaces",
+        "Programación multimedia",
+        "Programcación de servicios y procesos",
+        "Gestión empresarial",
+        "Desarrollo de Aplicaciones Multiplataforma",
+        "Formación en centros de trabajos",
+        "Empresa e iniciativa emprendedora"
+    ),
+    descripcion: List<String> = listOf(
+        "El objetivo de la asignatura de Acceso a Datos es proporcionar a los estudiantes los conocimientos y habilidades necesarios para diseñar, implementar y gestionar sistemas de bases de datos de manera efectiva y segura.\n Horas Semanales : 7 horas\n Horas Totales: 147 horas\n",
+        "El objetivo de la asignatura de Desarrollo de Interfaces en el ciclo superior de DAM es proporcionar a los estudiantes los conocimientos y habilidades necesarios para diseñar y desarrollar interfaces de usuario para aplicaciones informáticas.\n Horas Semanales : 7 horas\n Horas Totales: 147 horas",
+        "El objetivo de la asignatura de Programación multimedia y dispositivos móviles en el ciclo superior de DAM es proporcionar a los estudiantes los conocimientos y habilidades necesarios para desarrollar aplicaciones multimedia y para dispositivos móviles.\n Horas Semanales : 4 horas\n Horas Totales: 84 horas",
+        "El objetivo de la asignatura de Programación de servicios y procesos en el ciclo superior de DAM es proporcionar a los estudiantes los conocimientos y habilidades necesarios para diseñar, implementar y desplegar servicios y procesos en sistemas informáticos.\n Horas Semanales : 4 horas\n Horas Totales: 84 horas",
+        "La asignatura de Sistemas de gestión empresarial en el ciclo superior de DAM tiene como objetivo proporcionar a los estudiantes los conocimientos necesarios para comprender el funcionamiento de los sistemas de gestión empresarial y aprender a utilizar herramientas para su implementación.\n Horas Semanales : 3 horas\n Horas Totales: 63 horas",
+        "La asignatura de Proyecto de desarrollo de aplicaciones multiplataforma en el ciclo superior de DAM tiene como objetivo proporcionar a los estudiantes la oportunidad de aplicar los conocimientos y habilidades adquiridos en las diferentes asignaturas del ciclo formativo en un proyecto de desarrollo de software real, con el fin de que los estudiantes puedan desarrollar habilidades en la gestión y dirección de proyectos de software.\n Horas Semanales : 3 horas\n Horas Totales: 64 horas",
+        "En el caso del ciclo de DAM, durante la FCT, los estudiantes pueden trabajar en empresas relacionadas con el desarrollo de software y aplicaciones para diferentes plataformas, como Android, iOS o Windows. Los estudiantes pueden participar en proyectos de desarrollo de software, pruebas de calidad, mantenimiento de sistemas, entre otras actividades relacionadas con el desarrollo de aplicaciones multiplataforma.\n Horas Semanales : Dependiendo de la empresa\n Horas Totales: 346 horas",
+        "En el caso del ciclo de DAM, durante la FCT, los estudiantes pueden trabajar en empresas relacionadas con el desarrollo de software y aplicaciones para diferentes plataformas, como Android, iOS o Windows. Los estudiantes pueden participar en proyectos de desarrollo de software, pruebas de calidad, mantenimiento de sistemas, entre otras actividades relacionadas con el desarrollo de aplicaciones multiplataforma.\n Horas Semanales : 3\n Horas Totales: 63 horas"
+    )
+
+){
+    MiForAsignaturasFPS2(
+        imagenAsignatura = imagenAsignatura,
+        nombre = nombre,
+        descripcion = descripcion
+    )
+}
+
 
 @Composable
 fun MiForAsignaturasFPS1(imagenAsignatura: List<Int>, nombre: List<String>, descripcion: List<String>) {
@@ -885,4 +940,153 @@ fun MiForAsignaturasFPS1(imagenAsignatura: List<Int>, nombre: List<String>, desc
         }
     }
 }
+
+@Composable
+fun MiForAsignaturasFPS2(imagenAsignatura: List<Int>, nombre: List<String>, descripcion: List<String>) {
+
+    var expandirBox by remember {mutableStateOf(-1)}
+
+    Text(
+        text = "Asignaturas del Primer Año",
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+    )
+
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+    ) {
+        items(imagenAsignatura.size) { cadaItem ->
+            Box(
+                modifier = Modifier
+                    .width(320.dp)
+                    .clickable {
+                        expandirBox = if (expandirBox == cadaItem) -1 else cadaItem
+                    }
+                    .border(2.dp, Color.Black)
+            ) {
+                Column (
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = imagenAsignatura[cadaItem]),
+                        contentDescription = nombre[cadaItem]
+                    )
+
+                    if (expandirBox == cadaItem){
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Text(
+                            text = nombre[cadaItem],
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Text(
+                            text = descripcion[cadaItem],
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                    }
+                }
+            }
+        }
+    }
+}
 /******************* FP SUPERIOR **********************/
+
+/****************** PROYECTOS ************************/
+@Composable
+fun MiProyectos(
+    imagenAsignatura: List<Int> = listOf(
+        R.drawable.canaletafinal,
+        R.drawable.htmlfinal,
+        R.drawable.juegofinal  ,
+        R.drawable.montajefinal,
+        R.drawable.packetfinal,
+        R.drawable.centrofinal
+    ),
+    nombre: List<String> = listOf(
+        "Cable estructurado",
+        "Diseño de páginas webs",
+        "Elaboración de juegos",
+        "Montaje de equipos",
+        "Diseño de red",
+        "Formación en centros de trabajos"
+    ),
+    descripcion: List<String> = listOf(
+        "Hemos diseñado y ordenado los cables de un aula de informática y colocado unas canaletas en unas mesas para ordenar los cables.\n Formación profesional : Básica, Medio",
+        "El Lenguaje de Marcado de Hipertexto (HTML) es el código que se utiliza para estructurar y desplegar una página web y sus contenidos. Por ejemplo, sus contenidos podrían ser párrafos, una lista con viñetas, o imágenes y tablas de datos.\n Formacón profesional: Medio y Superior",
+        "Empezaremos a aprender a programar juegos sencillos como el juego de la serpiente, 2048, etc.\n Formación profesional: Superior\n",
+        "Vamos a aprender a montar y desmontar equipos y saber cada parte de él, así como disco duro, memoria RAM, etc.\n Formación profesional: Básica, Medio y Superior",
+        "Hemos creado y manipulado ordenadores, routers, switch, etc.\n Formación profesional: Basica y medio",
+        "Vamos a estar 2 meses y medio trabajando en empresas para obtener experiencia laboral.\n Formación profesional: Básica, Medio, Superior"
+    )
+
+){
+    MiForProyectos(
+        imagenAsignatura = imagenAsignatura,
+        nombre = nombre,
+        descripcion = descripcion
+    )
+}
+
+
+
+@Composable
+fun MiForProyectos(imagenAsignatura: List<Int>, nombre: List<String>, descripcion: List<String>) {
+
+    var expandirBox by remember {mutableStateOf(-1)}
+
+    Text(
+        text = "Asignaturas del Segundo Año",
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+    )
+
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+    ) {
+        items(imagenAsignatura.size) { cadaItem ->
+            Box(
+                modifier = Modifier
+                    .width(320.dp)
+                    .clickable {
+                        expandirBox = if (expandirBox == cadaItem) -1 else cadaItem
+                    }
+                    .border(2.dp, Color.Black)
+            ) {
+                Column (
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = imagenAsignatura[cadaItem]),
+                        contentDescription = nombre[cadaItem]
+                    )
+
+                    if (expandirBox == cadaItem){
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Text(
+                            text = nombre[cadaItem],
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Text(
+                            text = descripcion[cadaItem],
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                    }
+                }
+            }
+        }
+    }
+}
+/****************** PROYECTOS ***********************/

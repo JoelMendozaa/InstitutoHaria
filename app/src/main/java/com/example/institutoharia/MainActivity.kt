@@ -369,12 +369,10 @@ fun MiForAsignaturasFPB1(imagenAsignatura: List<Int>, nombre: List<String>, desc
 @Composable
 fun MiFPM(fpbClick: () -> Unit, inicioClick: () -> Unit, fpsClick: () -> Unit){
     LazyColumn (
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item{
-            Text("FPM")
             MiTopBar()
             MiInformacionYRequisitosFPM()
             MisBotonesFPM(fpbClick, inicioClick, fpsClick)
@@ -385,34 +383,59 @@ fun MiFPM(fpbClick: () -> Unit, inicioClick: () -> Unit, fpsClick: () -> Unit){
 
 @Composable
 fun MiInformacionYRequisitosFPM(){
+    OutlinedCard (
+        border = BorderStroke(2.dp, Color.Black),
+        modifier = Modifier.padding(12.dp)
+    ) {
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            text = "Información del Ciclo",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
 
-    Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            buildAnnotatedString {
+                withStyle(style = SpanStyle(fontSize = 16.sp)) {
+                    append(
+                        "Tiene una duración de 2000 horas totales.\n" +
+                                "Se aprende montaje de equipos en sistemas microinformáticos y redes de transmisión de datos, operaciones auxiliares en montaje y mantenimiento de sistemas informáticos, realizar operaciones para el almacenamiento y transporte de sistemas, periféricos y consumibles; y por último realizar comprobaciones rutinarias de verificación en el montaje\n"
+                    )
+                }
+            },
+            modifier = Modifier.padding(16.dp),
+        )
 
-    Text(
-        text = "Requisitos del Ciclo",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Center
-    )
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            text = "Requisitos del Ciclo",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
 
-    Text(
-        buildAnnotatedString {
-            withStyle(style = SpanStyle(fontSize = 16.sp)) {
-                append(
-                    "Tiene una duración de 2000 horas totales.\n" +
-                            "Se aprende montaje de equipos en sistemas microinformáticos y redes de transmisión de datos, operaciones auxiliares en montaje y mantenimiento de sistemas informáticos, realizar operaciones para el almacenamiento y transporte de sistemas, periféricos y consumibles; y por último realizar comprobaciones rutinarias de verificación en el montaje\n"
-                )
-            }
-        },
-        modifier = Modifier.padding(16.dp),
-    )
-
+        Text(
+            buildAnnotatedString {
+                withStyle(style = SpanStyle(fontSize = 16.sp)) {
+                    append(
+                        "Tiene una duración de 2000 horas totales.\n" +
+                                "Para poder acceder a la FP Básica, es necesario tener quince años o cumplirlos durante el año natural y no superar los diecisiete en el momento de acceso.\n" +
+                                "Haber cursado el primer ciclo de Educación Secundaria Obligatoria (3ºESO) o haber cursado el segundo ciclo de Educación Secundaria Obligatoria.\n" +
+                                "Haber propuesto el equipo docente a los padres, madres o tutores legales la incorporación del alumno o alumna a un ciclo de Formación Profesional Básica.\n" +
+                                "Se debe cumplir con todos los requisitos.\n"
+                    )
+                }
+            },
+            modifier = Modifier.padding(16.dp),
+        )
+    }
 }
 
 @Composable
-fun MisBotonesFPM(fpbClick: () -> Unit, inicioClick: () -> Unit, fpsClick: () -> Unit){
+fun MisBotonesFPM(fpmClick: () -> Unit, inicioClick: () -> Unit, fpsClick: () -> Unit){
     Row {
-        MiBotonPlaneate(onClick = fpbClick, imagenBoton = R.drawable.fpb, contentDescription = "fpb.png")
+        MiBotonPlaneate(onClick = fpmClick, imagenBoton = R.drawable.fpb, contentDescription = "fpm.png")
         MiBotonPlaneate(onClick = inicioClick, imagenBoton = R.drawable.inicio, contentDescription = "inicio.png")
         MiBotonPlaneate(onClick = fpsClick, imagenBoton = R.drawable.fps, contentDescription = "fps.png")
     }
@@ -508,12 +531,10 @@ fun MiForAsignaturasFPM1(imagenAsignatura: List<Int>, nombre: List<String>, desc
 @Composable
 fun MiFPS(fpbClick: () -> Unit, fpmClick: () -> Unit, inicioClick: () -> Unit){
     LazyColumn (
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item{
-            Text("FPS")
             MiTopBar()
             MiInformacionYRequisitosFPS()
             MisBotonesFPS(fpbClick, fpmClick, inicioClick)
@@ -524,35 +545,57 @@ fun MiFPS(fpbClick: () -> Unit, fpmClick: () -> Unit, inicioClick: () -> Unit){
 
 @Composable
 fun MiInformacionYRequisitosFPS(){
+    OutlinedCard (
+        border = BorderStroke(2.dp, Color.Black),
+        modifier = Modifier.padding(12.dp)
+    ) {
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            text = "Información del Ciclo",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
 
-    Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            buildAnnotatedString {
+                withStyle(style = SpanStyle(fontSize = 16.sp)) {
+                    append(
+                        "Tiene una duración de 2000 horas totales.\n" +
+                                "Se aprende a instalar y configurar software básico y de aplicación, redes locales cableadas, inalámbricas o mixtas y conectadas a redes públicas, a mantener servicios multiusuarios, aplicaciones y dispositivos compartidos en un entorno de red local, montar y configurar ordenadores, etc.\n"
+                    )
+                }
+            },
+            modifier = Modifier.padding(16.dp),
+        )
 
-    Text(
-        text = "Requisitos del Ciclo",
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Center
-    )
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text(
+            text = "Requisitos del Ciclo",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
 
-    Text(
-        buildAnnotatedString {
-            withStyle(style = SpanStyle(fontSize = 16.sp)) {
-                append(
-                    "Tiene una duración de 2000 horas totales.\n" +
-                            "Se aprende montaje de equipos en sistemas microinformáticos y redes de transmisión de datos, operaciones auxiliares en montaje y mantenimiento de sistemas informáticos, realizar operaciones para el almacenamiento y transporte de sistemas, periféricos y consumibles; y por último realizar comprobaciones rutinarias de verificación en el montaje\n"
-                )
-            }
-        },
-        modifier = Modifier.padding(16.dp),
-    )
-
+        Text(
+            buildAnnotatedString {
+                withStyle(style = SpanStyle(fontSize = 16.sp)) {
+                    append(
+                        "Tiene una duración de 2000 horas totales.\n" +
+                                "Se aprende montaje de equipos en sistemas microinformáticos y redes de transmisión de datos, operaciones auxiliares en montaje y mantenimiento de sistemas informáticos, realizar operaciones para el almacenamiento y transporte de sistemas, periféricos y consumibles; y por último realizar comprobaciones rutinarias de verificación en el montaje\n"
+                    )
+                }
+            },
+            modifier = Modifier.padding(16.dp),
+        )
+    }
 }
 
 @Composable
 fun MisBotonesFPS(fpbClick: () -> Unit, fpmClick: () -> Unit, inicioClick: () -> Unit){
     Row {
-        MiBotonPlaneate(onClick = fpbClick, imagenBoton = R.drawable.fpb, contentDescription = "fpb.png")
-        MiBotonPlaneate(onClick = fpmClick, imagenBoton = R.drawable.fpm, contentDescription = "fpm.png")
+        MiBotonPlaneate(onClick = fpbClick, imagenBoton = R.drawable.fpb, contentDescription = "fpm.png")
+        MiBotonPlaneate(onClick = fpmClick, imagenBoton = R.drawable.fpm, contentDescription = "fps.png")
         MiBotonPlaneate(onClick = inicioClick, imagenBoton = R.drawable.inicio, contentDescription = "inicio.png")
     }
 }
